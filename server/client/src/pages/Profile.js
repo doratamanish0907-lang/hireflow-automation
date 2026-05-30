@@ -33,7 +33,7 @@ function Profile() {
     try {
 
       await axios.post(
-        "http://localhost:5000/api/profile/save",
+        "http://http://hireflow-automation.onrender.com/api/auth/login",
         {
           ...formData,
           skills: formData.skills.split(","),

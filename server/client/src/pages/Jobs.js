@@ -61,7 +61,7 @@ function Jobs() {
 
       const response =
         await axios.get(
-          "http://localhost:5000/api/bot/search-jobs"
+          "http://hireflow-automation.onrender.com/api/bot/search-jobs"
         );
 
       console.log(
@@ -116,7 +116,7 @@ function Jobs() {
 
       const response =
         await axios.post(
-          "http://localhost:5000/api/bot/real-auto-apply",
+          "http://hireflow-automation.onrender.com/api/bot/real-auto-apply",
           {
             jobTitle:
               job.title,

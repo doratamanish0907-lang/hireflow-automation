@@ -18,7 +18,7 @@ function MatchedJobs() {
       ];
 
       const response = await axios.get(
-        `http://localhost:5000/api/jobs/matched-jobs?skills=${skills.join(",")}`
+        `http://hireflow-automation.onrender.com/api/jobs/matched-jobs?skills=${skills.join(",")}`
       );
 
       setJobs(response.data);

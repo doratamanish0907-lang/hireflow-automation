@@ -17,7 +17,7 @@ function ApplicationHistory() {
     try {
 
       const response = await axios.get(
-        "http://localhost:5000/api/application/history"
+        "http://http://hireflow-automation.onrender.com/api/auth/login"
       );
 
       setApplications(response.data);
