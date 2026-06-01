@@ -1,8 +1,12 @@
-2026/06/01-10:06:12.857 5f0 Reusing MANIFEST C:\Users\manis\OneDrive\Documents\Hireflow automation\server\chrome-data\Default\IndexedDB\https_www.naukri.com_0.indexeddb.leveldb/MANIFEST-000001
-2026/06/01-10:06:12.864 5f0 Recovering log #12
-2026/06/01-10:06:12.886 5f0 Reusing old log C:\Users\manis\OneDrive\Documents\Hireflow automation\server\chrome-data\Default\IndexedDB\https_www.naukri.com_0.indexeddb.leveldb/000012.log 
-2026/06/01-10:06:12.887 5f0 Delete type=2 #10
-2026/06/01-10:06:12.887 5f0 Delete type=2 #13
-2026/06/01-10:07:23.727 974 Level-0 table #18: started
-2026/06/01-10:07:23.800 974 Level-0 table #18: 1532642 bytes OK
-2026/06/01-10:07:23.807 974 Delete type=0 #12
+2026/06/01-17:38:59.796 34dc Reusing MANIFEST C:\Users\manis\OneDrive\Documents\Hireflow automation\server\chrome-data\Default\IndexedDB\https_www.naukri.com_0.indexeddb.leveldb/MANIFEST-000001
+2026/06/01-17:38:59.800 34dc Recovering log #22
+2026/06/01-17:39:00.171 34dc Reusing old log C:\Users\manis\OneDrive\Documents\Hireflow automation\server\chrome-data\Default\IndexedDB\https_www.naukri.com_0.indexeddb.leveldb/000022.log 
+2026/06/01-17:39:09.306 5f0 Level-0 table #28: started
+2026/06/01-17:39:09.358 5f0 Level-0 table #28: 1534284 bytes OK
+2026/06/01-17:39:09.365 5f0 Delete type=0 #22
+2026/06/01-17:41:21.157 5f0 Compacting 1@1 + 1@2 files
+2026/06/01-17:41:21.173 5f0 Generated table #29@1: 150 keys, 41520 bytes
+2026/06/01-17:41:21.173 5f0 Compacted 1@1 + 1@2 files => 41520 bytes
+2026/06/01-17:41:21.176 5f0 compacted to: files[ 0 0 1 0 0 0 0 ]
+2026/06/01-17:41:21.178 5f0 Delete type=2 #25
+2026/06/01-17:41:21.178 5f0 Delete type=2 #28

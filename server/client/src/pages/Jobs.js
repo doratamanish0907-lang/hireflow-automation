@@ -21,6 +21,10 @@ function Jobs() {
   const navigate =
     useNavigate();
 
+  // ==========================
+  // NAV BUTTON STYLE
+  // ==========================
+
   const navButton = {
 
     backgroundColor: "#2563eb",
@@ -29,13 +33,15 @@ function Jobs() {
 
     border: "none",
 
-    padding: "10px 20px",
+    padding: "12px 22px",
 
-    borderRadius: "5px",
+    borderRadius: "8px",
 
     cursor: "pointer",
 
     fontWeight: "bold",
+
+    fontSize: "15px",
 
   };
 
@@ -131,11 +137,22 @@ function Jobs() {
         response.data
       );
 
-      alert(
-        response.data.message
-      );
+      if (
+        response.data.success
+      ) {
 
-      setApplyingId(null);
+        alert(
+          "✅ Auto Apply Success"
+        );
+
+      } else {
+
+        alert(
+          response.data.message ||
+          "Apply Failed"
+        );
+
+      }
 
     } catch (error) {
 
@@ -147,8 +164,6 @@ function Jobs() {
       console.log(
         error.response?.data
       );
-
-      setApplyingId(null);
 
       alert(
 
@@ -162,9 +177,33 @@ function Jobs() {
 
       );
 
+    } finally {
+
+      // IMPORTANT FIX
+
+      setApplyingId(null);
+
     }
 
   };
+
+  // ==========================
+  // LOGOUT
+  // ==========================
+
+  const logout = () => {
+
+    localStorage.removeItem(
+      "token"
+    );
+
+    navigate("/");
+
+  };
+
+  // ==========================
+  // UI
+  // ==========================
 
   return (
 
@@ -172,7 +211,7 @@ function Jobs() {
       style={{
         minHeight: "100vh",
         backgroundColor:
-          "#111827",
+          "#0f172a",
         color: "white",
         padding: "40px",
         fontFamily: "Arial",
@@ -184,8 +223,8 @@ function Jobs() {
       <div
         style={{
           display: "flex",
-          gap: "10px",
-          marginBottom: "30px",
+          gap: "15px",
+          marginBottom: "35px",
           flexWrap: "wrap",
         }}
       >
@@ -215,7 +254,7 @@ function Jobs() {
         <button
           onClick={() =>
             navigate(
-              "/upload"
+              "/upload-resume"
             )
           }
           style={navButton}
@@ -246,9 +285,7 @@ function Jobs() {
         </button>
 
         <button
-          onClick={() =>
-            navigate("/")
-          }
+          onClick={logout}
           style={{
             ...navButton,
             backgroundColor:
@@ -265,6 +302,7 @@ function Jobs() {
       <h1
         style={{
           marginBottom: "30px",
+          fontSize: "34px",
         }}
       >
         🚀 LIVE Naukri Jobs
@@ -291,7 +329,7 @@ function Jobs() {
 
         )}
 
-      {/* JOBS */}
+      {/* JOB LIST */}
 
       {!loading &&
         jobs.map(
@@ -304,14 +342,14 @@ function Jobs() {
               key={index}
               style={{
                 backgroundColor:
-                  "#1f2937",
+                  "#1e293b",
 
-                padding: "25px",
+                padding: "30px",
 
-                marginTop: "20px",
+                marginTop: "25px",
 
                 borderRadius:
-                  "12px",
+                  "14px",
 
                 border:
                   job.type ===
@@ -320,7 +358,7 @@ function Jobs() {
                     : "2px solid #ef4444",
 
                 boxShadow:
-                  "0px 0px 10px rgba(0,0,0,0.4)",
+                  "0px 0px 15px rgba(0,0,0,0.5)",
               }}
             >
 
@@ -329,7 +367,10 @@ function Jobs() {
               <h2
                 style={{
                   fontSize:
-                    "24px",
+                    "30px",
+
+                  marginBottom:
+                    "15px",
                 }}
               >
                 {job.title}
@@ -339,14 +380,14 @@ function Jobs() {
 
               <p
                 style={{
-                  marginTop:
-                    "12px",
-
                   color:
                     "#d1d5db",
 
                   fontSize:
-                    "18px",
+                    "20px",
+
+                  marginBottom:
+                    "10px",
                 }}
               >
                 🏢 {
@@ -358,9 +399,6 @@ function Jobs() {
 
               <p
                 style={{
-                  marginTop:
-                    "12px",
-
                   fontWeight:
                     "bold",
 
@@ -372,25 +410,28 @@ function Jobs() {
 
                   fontSize:
                     "18px",
+
+                  marginBottom:
+                    "20px",
                 }}
               >
                 {job.type}
               </p>
 
-              {/* BUTTON */}
+              {/* APPLY BUTTON */}
 
               <button
 
                 style={{
 
-                  marginTop:
-                    "20px",
-
                   padding:
-                    "12px 25px",
+                    "14px 28px",
 
                   backgroundColor:
-                    "#dc2626",
+                    applyingId ===
+                    index
+                      ? "#f97316"
+                      : "#dc2626",
 
                   color:
                     "white",
@@ -399,7 +440,7 @@ function Jobs() {
                     "none",
 
                   borderRadius:
-                    "6px",
+                    "8px",
 
                   cursor:
                     "pointer",
