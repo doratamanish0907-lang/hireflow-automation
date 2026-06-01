@@ -5,7 +5,7 @@ function App() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    fetch("http://localhost:5000/api/jobs/search")
+    fetch("http://hireflow-production.up.railway.app/api/jobs/search")
       .then((res) => res.json())
       .then((data) => {
         setJobs(data);
