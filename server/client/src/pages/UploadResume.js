@@ -43,7 +43,7 @@ function UploadResume() {
     try {
 
       const response = await axios.post(
-        "http://http://hireflow-automation.onrender.com/api/auth/login",
+        "http://localhost:5000/api/resume/upload",
         formData
       );
 

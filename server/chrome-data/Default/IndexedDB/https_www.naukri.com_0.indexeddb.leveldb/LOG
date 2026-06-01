@@ -1,3 +1,8 @@
-2026/05/30-13:04:22.405 59c Reusing MANIFEST C:\Users\manis\OneDrive\Documents\Hireflow automation\server\chrome-data\Default\IndexedDB\https_www.naukri.com_0.indexeddb.leveldb/MANIFEST-000001
-2026/05/30-13:04:22.414 59c Recovering log #4
-2026/05/30-13:04:22.475 59c Reusing old log C:\Users\manis\OneDrive\Documents\Hireflow automation\server\chrome-data\Default\IndexedDB\https_www.naukri.com_0.indexeddb.leveldb/000004.log 
+2026/06/01-10:06:12.857 5f0 Reusing MANIFEST C:\Users\manis\OneDrive\Documents\Hireflow automation\server\chrome-data\Default\IndexedDB\https_www.naukri.com_0.indexeddb.leveldb/MANIFEST-000001
+2026/06/01-10:06:12.864 5f0 Recovering log #12
+2026/06/01-10:06:12.886 5f0 Reusing old log C:\Users\manis\OneDrive\Documents\Hireflow automation\server\chrome-data\Default\IndexedDB\https_www.naukri.com_0.indexeddb.leveldb/000012.log 
+2026/06/01-10:06:12.887 5f0 Delete type=2 #10
+2026/06/01-10:06:12.887 5f0 Delete type=2 #13
+2026/06/01-10:07:23.727 974 Level-0 table #18: started
+2026/06/01-10:07:23.800 974 Level-0 table #18: 1532642 bytes OK
+2026/06/01-10:07:23.807 974 Delete type=0 #12

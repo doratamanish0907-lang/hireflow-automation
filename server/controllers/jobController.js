@@ -1,3 +1,6 @@
+const axios = require("axios");
+
+// STATIC JOBS
 const jobs = [
   {
     company: "Amazon",
@@ -21,6 +24,7 @@ const jobs = [
   },
 ];
 
+// GET MATCHED JOBS
 exports.getMatchedJobs = async (req, res) => {
   try {
     const resumeText = req.body.resumeText.toLowerCase();
@@ -59,6 +63,33 @@ exports.getMatchedJobs = async (req, res) => {
     res.status(500).json({
       success: false,
       message: "Job matching failed",
+    });
+  }
+};
+
+// AUTO APPLY FUNCTION
+exports.autoApply = async (req, res) => {
+  console.log("🔥 Auto Apply API Hit");
+
+  try {
+    const { company, role } = req.body;
+
+    console.log("Company:", company);
+    console.log("Role:", role);
+
+    // TEMP SUCCESS RESPONSE
+    // Baad me yahan Puppeteer/Naukri automation add karenge
+
+    return res.status(200).json({
+      success: true,
+      message: `Successfully Applied for ${role} at ${company}`,
+    });
+  } catch (error) {
+    console.log("AUTO APPLY ERROR:", error);
+
+    return res.status(500).json({
+      success: false,
+      message: "Auto Apply Failed",
     });
   }
 };

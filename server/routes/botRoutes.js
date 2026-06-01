@@ -18,10 +18,6 @@ router.get("/search-jobs", async (req, res) => {
 
   try {
 
-    // =========================
-    // GET PROFILE
-    // =========================
-
     const latestProfile =
       await Profile.findOne().sort({
         _id: -1,
@@ -45,18 +41,10 @@ router.get("/search-jobs", async (req, res) => {
       preferredRole
     );
 
-    // =========================
-    // SEARCH URL
-    // =========================
-
     const searchUrl =
       `https://www.naukri.com/${preferredRole
         .replace(/\s+/g, "-")
         .toLowerCase()}-jobs`;
-
-    // =========================
-    // OPEN BROWSER
-    // =========================
 
     browser =
       await puppeteer.launch({
@@ -74,10 +62,6 @@ router.get("/search-jobs", async (req, res) => {
     const page =
       await browser.newPage();
 
-    // =========================
-    // OPEN PAGE
-    // =========================
-
     await page.goto(searchUrl, {
 
       waitUntil:
@@ -93,9 +77,7 @@ router.get("/search-jobs", async (req, res) => {
       setTimeout(resolve, 6000)
     );
 
-    // =========================
     // CLOSE POPUP
-    // =========================
 
     try {
 
@@ -120,20 +102,12 @@ router.get("/search-jobs", async (req, res) => {
 
     }
 
-    // =========================
-    // WAIT FOR JOBS
-    // =========================
-
     await page.waitForSelector(
       ".srp-jobtuple-wrapper",
       {
         timeout: 20000,
       }
     );
-
-    // =========================
-    // FETCH JOBS
-    // =========================
 
     const jobs =
       await page.evaluate(() => {
@@ -166,29 +140,11 @@ router.get("/search-jobs", async (req, res) => {
 
           if (
 
-            text.includes(
-              "easy apply"
-            ) ||
-
-            text.includes(
-              "apply"
-            ) ||
-
-            text.includes(
-              "apply now"
-            ) ||
-
-            text.includes(
-              "login to apply"
-            ) ||
-
-            text.includes(
-              "register to apply"
-            ) ||
-
-            text.includes(
-              "apply on company site"
-            )
+            text.includes("easy apply") ||
+            text.includes("apply") ||
+            text.includes("apply now") ||
+            text.includes("login to apply") ||
+            text.includes("register to apply")
 
           ) {
 
@@ -264,10 +220,6 @@ router.post(
 
     try {
 
-      // =========================
-      // GET PROFILE
-      // =========================
-
       const latestProfile =
         await Profile.findOne().sort({
           _id: -1,
@@ -291,18 +243,10 @@ router.post(
         preferredRole
       );
 
-      // =========================
-      // SEARCH URL
-      // =========================
-
       const searchUrl =
         `https://www.naukri.com/${preferredRole
           .replace(/\s+/g, "-")
           .toLowerCase()}-jobs`;
-
-      // =========================
-      // OPEN BROWSER
-      // =========================
 
       browser =
         await puppeteer.launch({
@@ -323,10 +267,6 @@ router.post(
       const page =
         await browser.newPage();
 
-      // =========================
-      // OPEN PAGE
-      // =========================
-
       await page.goto(searchUrl, {
 
         waitUntil:
@@ -342,9 +282,7 @@ router.post(
         setTimeout(resolve, 8000)
       );
 
-      // =========================
       // CLOSE POPUP
-      // =========================
 
       try {
 
@@ -369,20 +307,12 @@ router.post(
 
       }
 
-      // =========================
-      // WAIT FOR JOBS
-      // =========================
-
       await page.waitForSelector(
         ".srp-jobtuple-wrapper",
         {
           timeout: 20000,
         }
       );
-
-      // =========================
-      // GET JOB CARDS
-      // =========================
 
       const cards =
         await page.$$(
@@ -393,10 +323,6 @@ router.post(
         "Total Jobs:",
         cards.length
       );
-
-      // =========================
-      // LOOP THROUGH JOBS
-      // =========================
 
       for (
         let i = 0;
@@ -429,33 +355,6 @@ router.post(
 
           }
 
-          // =========================
-          // CARD TEXT
-          // =========================
-
-          const cardText =
-            await page.evaluate(
-              el => el.innerText,
-              currentCard
-            );
-
-          console.log(
-            "CARD:",
-            cardText
-          );
-
-          // =========================
-          // DON'T SKIP JOBS
-          // =========================
-
-          console.log(
-            "Checking Apply Button Inside Job Page"
-          );
-
-          // =========================
-          // TITLE LINK
-          // =========================
-
           const titleLink =
             await currentCard.$(
               "a.title"
@@ -479,9 +378,7 @@ router.post(
 
           }
 
-          // =========================
           // OPEN JOB PAGE
-          // =========================
 
           jobPage =
             await browser.newPage();
@@ -501,9 +398,7 @@ router.post(
             setTimeout(resolve, 7000)
           );
 
-          // =========================
           // CLOSE POPUP AGAIN
-          // =========================
 
           try {
 
@@ -534,9 +429,7 @@ router.post(
             setTimeout(resolve, 4000)
           );
 
-          // =========================
           // FIND APPLY BUTTON
-          // =========================
 
           const buttons =
             await jobPage.$$(
@@ -571,43 +464,20 @@ router.post(
               const lower =
                 text.toLowerCase();
 
-              // =========================
-              // VALID APPLY BUTTONS
-              // =========================
-
               if (
 
                 (
 
-                  lower.includes(
-                    "apply"
-                  ) ||
-
-                  lower.includes(
-                    "easy apply"
-                  ) ||
-
-                  lower.includes(
-                    "login to apply"
-                  ) ||
-
-                  lower.includes(
-                    "register to apply"
-                  )
+                  lower.includes("apply") ||
+                  lower.includes("easy apply") ||
+                  lower.includes("login to apply") ||
+                  lower.includes("register to apply")
 
                 ) &&
 
-                !lower.includes(
-                  "already applied"
-                ) &&
-
-                !lower.includes(
-                  "company site"
-                ) &&
-
-                !lower.includes(
-                  "save"
-                )
+                !lower.includes("already applied") &&
+                !lower.includes("company site") &&
+                !lower.includes("save")
 
               ) {
 
@@ -649,10 +519,6 @@ router.post(
                 applyClicked =
                   true;
 
-                // =========================
-                // WAIT AFTER APPLY
-                // =========================
-
                 await new Promise(resolve =>
                   setTimeout(resolve, 7000)
                 );
@@ -666,19 +532,12 @@ router.post(
                   const uploadSelectors = [
 
                     "input[type='file']",
-
                     "#attachCV",
-
                     ".upload-resume input",
-
                     "input[name='resume']",
-
                     "input[name='file']",
-
                     "#file_upload",
-
                     ".resume-upload input",
-
                     ".resume-upload-container input",
 
                   ];
@@ -750,53 +609,111 @@ router.post(
 
                 try {
 
+                  await new Promise(resolve =>
+                    setTimeout(resolve, 5000)
+                  );
+
                   const finalButtons =
                     await jobPage.$$(
                       "button"
                     );
 
+                  let submitted =
+                    false;
+
                   for (let finalBtn of finalButtons) {
 
-                    const finalText =
-                      await jobPage.evaluate(
-                        el =>
-                          el.innerText,
-                        finalBtn
+                    try {
+
+                      const finalText =
+                        await jobPage.evaluate(
+                          el =>
+                            el.innerText,
+                          finalBtn
+                        );
+
+                      console.log(
+                        "Final Button:",
+                        finalText
                       );
 
-                    if (
+                      if (
+                        finalText &&
+                        (
+                          finalText
+                            .toLowerCase()
+                            .includes("submit") ||
 
-                      finalText &&
+                          finalText
+                            .toLowerCase()
+                            .includes("apply")
+                        )
+                      ) {
 
-                      (
+                        await finalBtn.evaluate(
+                          el =>
+                            el.scrollIntoView({
+                              behavior:
+                                "smooth",
+                              block:
+                                "center",
+                            })
+                        );
 
-                        finalText
-                          .toLowerCase()
-                          .includes(
-                            "submit"
-                          ) ||
+                        await new Promise(resolve =>
+                          setTimeout(resolve, 3000)
+                        );
 
-                        finalText
-                          .toLowerCase()
-                          .includes(
-                            "apply"
-                          )
+                        try {
 
-                      )
+                          await finalBtn.click();
 
-                    ) {
+                        } catch {
 
-                      try {
+                          await jobPage.evaluate(
+                            el => el.click(),
+                            finalBtn
+                          );
 
-                        await finalBtn.click();
+                        }
 
                         console.log(
                           "Final Submit Clicked"
                         );
 
-                      } catch {}
+                        submitted =
+                          true;
+
+                        break;
+
+                      }
+
+                    } catch (err) {
+
+                      console.log(
+                        "Final Button Error"
+                      );
 
                     }
+
+                  }
+
+                  if (submitted) {
+
+                    return res.json({
+
+                      success: true,
+
+                      message:
+                        "Auto Apply Success",
+
+                    });
+
+                  } else {
+
+                    console.log(
+                      "Final Submit Failed"
+                    );
 
                   }
 
@@ -807,15 +724,6 @@ router.post(
                   );
 
                 }
-
-                return res.json({
-
-                  success: true,
-
-                  message:
-                    "Auto Apply Success",
-
-                });
 
               }
 
@@ -836,10 +744,6 @@ router.post(
             );
 
           }
-
-          // =========================
-          // CLOSE TAB
-          // =========================
 
           await jobPage.close();
 

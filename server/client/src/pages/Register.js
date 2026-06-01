@@ -21,7 +21,7 @@ function Register() {
   const handleRegister = async () => {
     try {
       const res = await axios.post(
-        "http://hireflow-automation.onrender.com/api/auth/register",
+        "http://localhost:5000/api/auth/register",
         formData
       );
 

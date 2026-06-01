@@ -1,3 +1,19 @@
-2026/05/30-12:59:06.156 32cc Reusing MANIFEST C:\Users\manis\OneDrive\Documents\Hireflow automation\server\chrome-data\Default\Local Storage\leveldb/MANIFEST-000001
-2026/05/30-12:59:06.179 32cc Recovering log #9
-2026/05/30-12:59:06.189 32cc Reusing old log C:\Users\manis\OneDrive\Documents\Hireflow automation\server\chrome-data\Default\Local Storage\leveldb/000009.log 
+2026/05/30-22:12:25.996 38b0 Reusing MANIFEST C:\Users\manis\OneDrive\Documents\Hireflow automation\server\chrome-data\Default\Local Storage\leveldb/MANIFEST-000001
+2026/05/30-22:12:26.096 38b0 Recovering log #9
+2026/05/30-22:12:26.113 38b0 Reusing old log C:\Users\manis\OneDrive\Documents\Hireflow automation\server\chrome-data\Default\Local Storage\leveldb/000009.log 
+2026/05/30-22:13:26.191 fb8 Level-0 table #13: started
+2026/05/30-22:13:26.198 38b0 Current memtable full; waiting...
+2026/05/30-22:13:26.204 fb8 Level-0 table #13: 17622 bytes OK
+2026/05/30-22:13:26.211 fb8 Delete type=0 #9
+2026/05/30-22:13:26.220 10a0 Level-0 table #15: started
+2026/05/30-22:13:26.226 10a0 Level-0 table #15: 29504 bytes OK
+2026/05/30-22:13:26.232 10a0 Delete type=0 #12
+2026/05/30-22:13:26.233 10a0 Compacting 5@0 + 0@1 files
+2026/05/30-22:13:26.242 10a0 Generated table #16@0: 43 keys, 68763 bytes
+2026/05/30-22:13:26.242 10a0 Compacted 5@0 + 0@1 files => 68763 bytes
+2026/05/30-22:13:26.245 10a0 compacted to: files[ 0 1 0 0 0 0 0 ]
+2026/05/30-22:13:26.247 10a0 Delete type=2 #3
+2026/05/30-22:13:26.247 10a0 Delete type=2 #7
+2026/05/30-22:13:26.248 10a0 Delete type=2 #10
+2026/05/30-22:13:26.248 10a0 Delete type=2 #13
+2026/05/30-22:13:26.248 10a0 Delete type=2 #15
